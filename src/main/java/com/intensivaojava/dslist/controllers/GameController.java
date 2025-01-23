@@ -7,6 +7,7 @@ import java.util.List;
 
 //import com.intensivaojava.dslist.entities.Game;
 import com.intensivaojava.dslist.services.GameService;
+import com.intensivaojava.dslist.dto.GameDTO;
 import com.intensivaojava.dslist.dto.GameMinDTO;
 
 @RestController
@@ -16,6 +17,12 @@ public class GameController {
 	@Autowired
 	private GameService gameService;
 
+	@GetMapping(value = "/{id}")
+	public GameDTO findById(@PathVariable Long id){
+		GameDTO result = gameService.findById(id);
+		return result;
+	}
+	
 	@GetMapping
 	public List<GameMinDTO> findAll(){
 		List<GameMinDTO> result = gameService.findAll();
